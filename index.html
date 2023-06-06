@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Cumputing Fuel lable</title>
+	<link rel="stylesheet" href="style.css"/>
+<!--
+<style>
+.container {
+  position: relative;
+font-siza: 50;
+  font-family: B nazanin;
+}
+
+.text-block {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  color: balck;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+</style>
+-->
+</head>
+<body>
+	<h1>Computing fuel Consumption:</h1>
+		<!-- Add the following code to add a button that saves your HTML page as a PDF file -->
+	<!--button onclick="window.print()">Save as PDF</button-->
+	<form1>
+		<label for="RunningMass">Enter <b>Running order</b> mass:</label><br>
+		<input type="number" id="RunningMass" name="RunningMass"><br><br>
+
+		<label for="Co">Enter <b>Emitted</b> Co2:</label><br>
+		<input type="number" id="Co" name="Co"><br><br>
+		
+		<label for="drive_wheel"> 4WD:</label>
+  		<input type="checkbox" id="drive_wheel" name="drive_wheel"><br>
+		<label for="VAN"> Is it van:        </label>
+		<input type="checkbox" id="VAN" name="VAN" ><br>
+		
+  		<label for="Auto"> Is it Automatic:</label>
+		<input type="checkbox" id="Auto" name="Auto" ><br><br>
+		
+  		<button onclick= "compute()"><b>Compute</b></button><br><br>
+
+		 Allowed_Co2: <input type="text" id="result" name="result"><br><br>
+
+                                 The Vehicle Grade Is: <input type="text" id="grade" name="grade"><br><br>
+                                Coeff: <input type="text" id="sum" name="sum">
+
+
+
+	</form1><br><br>
+
+
+
+<!--	
+<div class="container">
+  <img src="lable.jpg" style="width:100%;">
+  <div class="text-block">
+    <h4>Nature</h4>
+    <p>یبلبل</p>
+  </div>
+</div>
+-->
+	
+
+
+<script>
+		function compute() {
+			event.preventDefault();
+			
+			var RunningMass = document.getElementById("RunningMass").value;
+			var Co = document.getElementById("Co").value;
+			var result = 228.83+0.09*(RunningMass-1467.73);
+			
+		
+			var car = 0;
+			var dcar = 0;
+			var Autocar = 0;
+			
+			if (document.getElementById("VAN").checked){
+				car = 0.05;}
+			if (document.getElementById("drive_wheel").checked){
+				dcar = 0.05;}
+			if (document.getElementById("Auto").checked){
+				Autocar = 0.05;}
+			let Coeffiecient =  car+dcar+Autocar;
+			document.getElementById("sum").value = Coeffiecient  ;
+			result = result*(1+Coeffiecient);
+
+			document.getElementById("result").value = result;
+
+			if(Co<=0.64*result){grade = "grade is A"}
+			else if(Co<=0.7*result){grade = "grade is B"}
+			else if(Co<=0.76*result){grade = "grade is C"}
+			else if(Co<=0.82*result){grade = 'grade is D'}
+			else if(Co<=0.88*result){grade = 'grade is E'}
+			else if(Co<=0.94*result){grade = 'grade is F'}
+			else if(Co<=result){grade = 'grade is G'}
+			if(Co>result){grade = 'oops!! is out of range'}
+			document.getElementById("grade").value = grade;
+
+				}
+	</script>
+
+</body>
+</html>
